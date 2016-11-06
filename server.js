@@ -5,7 +5,10 @@ var app = express();
 app.use(bodyParser.json()); // support json encoded bodies
 
 app.post('/decode', function (req, res) {
-	console.log(unescape(req.body.cert));      // your JSON)
+	console.log("-------------- Request received --------------------");
+	console.log(new Date().toISOString());
+	console.log("method ",req.method);
+	console.log("Certificate received:\n",unescape(req.body.cert));      // your JSON)
 	var cert = unescape(req.body.cert);
 	opensslTools.getCertificateRequestInfo(cert, function(err, data){
 		if (err) {
@@ -18,6 +21,7 @@ app.post('/decode', function (req, res) {
 		res.writeHead(200, {"Content-Type": "application/json"});
 		res.write(JSON.stringify(data));
 		res.end();
+		console.log("-------------- Request completed --------------------\n\n");
 	});
 })
 
