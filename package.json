@@ -4,6 +4,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "~4.10.2",
-    "openssl-cert-tools": "^1.2.0"
+    "openssl-cert-tools": "^1.2.0",
+    "ssl-utils": "^0.3.0"
   }
 }
